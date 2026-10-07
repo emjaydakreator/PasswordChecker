@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Password Strength Auditor</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+</head>
+
+<body>
+
+<div class="container">
+    <div class="auditor-wrapper">
+
+        <div class="text-center mb-4">
+            <div class="security-icon">🔐</div>
+            <h1>Password Strength Auditor</h1>
+            <p class="subtitle">
+                Analyse your password against modern security requirements.
+            </p>
+        </div>
+
+        <div class="auditor-card">
+
+            <label for="password" class="form-label">
+                Enter a password
+            </label>
+
+            <div class="password-container">
+                <input
+                    type="password"
+                    id="password"
+                    class="form-control"
+                    placeholder="Type your password..."
+                    autocomplete="new-password"
+                >
+
+                <button
+                    id="togglePassword"
+                    class="toggle-password"
+                    type="button"
+                    aria-label="Show password"
+                >
+                    Show
+                </button>
+            </div>
+
+            <div class="strength-section">
+
+                <div class="strength-header">
+                    <span>Strength</span>
+                    <span id="strengthText">Waiting...</span>
+                </div>
+
+                <div class="strength-bar">
+                    <div id="strengthFill"></div>
+                </div>
+
+            </div>
+
+            <div class="stats">
+
+                <div class="stat">
+                    <span class="stat-title">Score</span>
+                    <span id="score">0 / 6</span>
+                </div>
+
+                <div class="stat">
+                    <span class="stat-title">Entropy</span>
+                    <span id="entropy">0 bits</span>
+                </div>
+
+            </div>
+
+            <hr>
+
+            <h2>Password Requirements</h2>
+
+            <div class="requirements">
+
+                <div class="requirement" id="lengthCheck">
+                    <span class="indicator">○</span>
+                    At least 12 characters
+                </div>
+
+                <div class="requirement" id="uppercaseCheck">
+                    <span class="indicator">○</span>
+                    Contains an uppercase letter
+                </div>
+
+                <div class="requirement" id="lowercaseCheck">
+                    <span class="indicator">○</span>
+                    Contains a lowercase letter
+                </div>
+
+                <div class="requirement" id="numberCheck">
+                    <span class="indicator">○</span>
+                    Contains a number
+                </div>
+
+                <div class="requirement" id="specialCheck">
+                    <span class="indicator">○</span>
+                    Contains a special character
+                </div>
+
+                <div class="requirement" id="commonCheck">
+                    <span class="indicator">○</span>
+                    Not found in common-password list
+                </div>
+
+            </div>
+
+            <div id="recommendationSection" class="recommendations">
+                <h2>Recommendations</h2>
+
+                <ul id="recommendations">
+                    <li>Start typing to analyse your password.</li>
+                </ul>
+            </div>
+
+            <div class="privacy-notice">
+                🔒 Your password is analysed in real time and is never stored.
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+</body>
+</html>
